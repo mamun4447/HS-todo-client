@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 const NavBar = () => {
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-rose-300">
         <div className="navbar-start">
           {/* ===> Mobile screen <=== */}
           <div className="dropdown">
@@ -48,15 +48,18 @@ const NavBar = () => {
               </div>
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            daisyUI
+          <a
+            href="/"
+            className="btn btn-ghost text-white font-sans normal-case text-xl"
+          >
+            Todo
           </a>
         </div>
 
         {/* ===> Large Screen <=== */}
-        <div className="navbar-end gap-10 mx-4 hidden lg:flex  ">
+        <div className="navbar-end gap-10 mx-4 hidden lg:flex text-white">
           <div className="text-lg flex gap-2 justify-center items-center">
-            <a href="/" className="bg-slate-400 rounded-full p-1">
+            <a href="/" className="bg-rose-200 rounded-full p-1">
               <AiOutlinePlus />
             </a>
             Add

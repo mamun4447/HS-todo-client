@@ -1,13 +1,8 @@
-import NavBar from "./components/NavBar";
-import Todos from "./components/Todos";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router";
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      <Todos />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
