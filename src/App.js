@@ -1,9 +1,11 @@
-import SideNav from "./components/SideNav";
+import NavBar from "./components/NavBar";
+import Todos from "./components/Todos";
 
 function App() {
   return (
     <div className="App">
-      <SideNav />
+      <NavBar />
+      <Todos />
     </div>
   );
 }
