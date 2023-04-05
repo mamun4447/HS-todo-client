@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { AuthContext } from "../Contexst/AuthProvider";
+import TodoModal from "./TodoModal";
 
 const NavBar = () => {
+  const { user, LogOut } = useContext(AuthContext);
   return (
     <div>
       <div className="navbar bg-rose-300">
@@ -59,23 +62,37 @@ const NavBar = () => {
         {/* ===> Large Screen <=== */}
         <div className="navbar-end gap-10 mx-4 hidden lg:flex text-white">
           <div className="text-lg flex gap-2 justify-center items-center">
-            <a href="/" className="bg-rose-200 rounded-full p-1">
+            <label
+              htmlFor="my-modal-6"
+              className="bg-rose-200 rounded-full p-1 cursor-pointer"
+            >
               <AiOutlinePlus />
-            </a>
+            </label>
             Add
           </div>
-          <a href="/login" className="text-lg">
-            LogIn
-          </a>
+          {user ? (
+            <p onClick={LogOut} className="text-lg cursor-pointer">
+              LogOut
+            </p>
+          ) : (
+            <a href="/login" className="text-lg">
+              LogIn
+            </a>
+          )}
           <div className="w-10 rounded-full">
-            <img
-              src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146"
-              className="rounded-full"
-              alt=""
-            />
+            {user ? (
+              <img src={user.photoURL} className="rounded-full" alt="" />
+            ) : (
+              <img
+                src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146"
+                className="rounded-full"
+                alt=""
+              />
+            )}
           </div>
         </div>
       </div>
+      {user && <TodoModal />}
     </div>
   );
 };
