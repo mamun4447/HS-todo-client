@@ -5,7 +5,6 @@ import { AuthContext } from "../Contexst/AuthProvider";
 
 const TodoModal = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   let now = new Date();
 
   const handlePostTodo = (event) => {
@@ -52,7 +51,7 @@ const TodoModal = () => {
         <div className="modal-box">
           <label
             htmlFor="my-modal-6"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2 bg-rose-400 border-none"
           >
             ✕
           </label>

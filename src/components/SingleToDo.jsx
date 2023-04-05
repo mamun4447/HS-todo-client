@@ -22,12 +22,13 @@ const SingleToDo = ({ item }) => {
       <div className="border w-full lg:w-[75%] mx-auto p-5 rounded-md flex justify-between">
         <div>
           <h2 className="text-xl font-bold">{item?.title}</h2>
-          <h5 className="text-xs text-slate-400 ml-1">{`${item?.time.date}/ ${item?.time?.month}  /${item?.time?.year}`}</h5>
+          <h5 className="text-xs text-slate-400 ml-1">{`${item?.time.date}/ ${
+            item?.time?.month + 1
+          }  /${item?.time?.year}`}</h5>
           <p className="py-3 mx-3 text-slate-600">{item?.description}</p>
           <label
             htmlFor="modal-update"
             className="cursor-pointer underline text-rose-400"
-            onClick={() => setTodo(item)}
           >
             Update
           </label>
@@ -42,7 +43,7 @@ const SingleToDo = ({ item }) => {
           </button>
         </div>
       </div>
-      <UpdateModal todo={todo} />
+      <UpdateModal item={item} />
     </>
   );
 };

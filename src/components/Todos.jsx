@@ -15,10 +15,10 @@ const Todos = () => {
   }, [items, user]);
   return (
     <div className="grid grid-cols-1 gap-2 mt-10 mx-5">
-      {items.length > 0 ? (
+      {items?.length > 0 ? (
         items?.map((item) => <SingleToDo item={item} key={item._id} />)
       ) : (
-        <h1>There is no todo!</h1>
+        <h1 className="mx-auto my-20 text-2xl ">There is no todo!</h1>
       )}
       <div className="text-lg flex gap-2 justify-center items-center text-black my-5">
         <label

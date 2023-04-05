@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../Contexst/AuthProvider";
 
-const UpdateModal = ({ todo }) => {
+const UpdateModal = ({ item }) => {
   const { user } = useContext(AuthContext);
   //   console.log(todo);
   let now = new Date();
@@ -23,7 +23,7 @@ const UpdateModal = ({ todo }) => {
         day: now.getDay(),
       },
     };
-    fetch(`http://localhost:5000/todo/${event?._id}`, {
+    fetch(`http://localhost:5000/todo/${item?._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -41,9 +41,6 @@ const UpdateModal = ({ todo }) => {
   };
   return (
     <div>
-      {/* The button to open modal */}
-
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="modal-update" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
@@ -60,19 +57,20 @@ const UpdateModal = ({ todo }) => {
               name="title"
               className="input border w-full my-2 border-rose-200"
               placeholder="title"
-              defaultValue={todo?.title}
+              defaultValue={item?.title}
             />
             <textarea
               name="description"
-              defaultValue={todo?.description}
+              defaultValue={item?.description}
               className="w-full border border-rose-200 input textarea h-40"
             ></textarea>
             <input
               type="text"
               className="input border w-full my-2 border-rose-200"
               name="date"
-              defaultValue={`${todo.time?.date}/ ${todo.time?.month}  /${todo.time?.year}`}
-              disabled
+              defaultValue={`${item?.time.date}/${item?.time?.month + 1}/${
+                item?.time?.year
+              }`}
             />
             <div className="modal-action items-center justify-center">
               <button>

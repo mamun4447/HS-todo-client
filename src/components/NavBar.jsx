@@ -75,9 +75,14 @@ const NavBar = () => {
               LogOut
             </p>
           ) : (
-            <a href="/login" className="text-lg">
-              LogIn
-            </a>
+            <>
+              <a href="/login" className="text-lg">
+                LogIn
+              </a>
+              <a href="/signup" className="text-lg">
+                SignUp
+              </a>
+            </>
           )}
           <div className="w-10 rounded-full">
             {user ? (
