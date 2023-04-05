@@ -55,7 +55,7 @@ const NavBar = () => {
             href="/"
             className="btn btn-ghost text-white font-sans normal-case text-xl"
           >
-            Todo
+            HS-ToDo
           </a>
         </div>
 
