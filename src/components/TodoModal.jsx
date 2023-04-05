@@ -25,7 +25,7 @@ const TodoModal = () => {
         day: now.getDay(),
       },
     };
-    fetch("http://localhost:5000/todo", {
+    fetch("https://hstodo.vercel.app/todo", {
       method: "POST",
       headers: {
         "content-type": "application/json",

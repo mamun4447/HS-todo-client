@@ -23,7 +23,7 @@ const UpdateModal = ({ item }) => {
         day: now.getDay(),
       },
     };
-    fetch(`http://localhost:5000/todo/${item?._id}`, {
+    fetch(`https://hstodo.vercel.app/todo/${item?._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -9,7 +9,7 @@ const Todos = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/todo/${user?.email}`)
+    fetch(`https://hstodo.vercel.app/todo/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setItems(data?.data));
   }, [items, user]);

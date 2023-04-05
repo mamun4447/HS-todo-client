@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { toast } from "react-hot-toast";
 import UpdateModal from "./UpdateModal";
 
 const SingleToDo = ({ item }) => {
-  const [todo, setTodo] = useState({});
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/todo/${id}`, {
+    fetch(`https://hstodo.vercel.app/todo/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
