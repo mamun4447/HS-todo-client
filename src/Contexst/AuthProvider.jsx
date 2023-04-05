@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -28,6 +29,13 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  const EmailVerification = () => {
+    setLoading(true);
+    return sendEmailVerification(auth.currentUser);
+  };
+
+  // ==> Google LogIn <===//
   const GoogleLogin = (Provider) => {
     setLoading(true);
     return signInWithPopup(auth, Provider);
@@ -53,6 +61,7 @@ const AuthProvider = ({ children }) => {
     LogInWithEmail,
     GoogleLogin,
     loading,
+    EmailVerification,
     LogOut,
   };
   return (

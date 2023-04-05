@@ -7,7 +7,7 @@ import { AuthContext } from "../Contexst/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const { user, loading, GoogleLogin, SinUpWithEmail } =
+  const { user, loading, GoogleLogin, SinUpWithEmail, EmailVerification } =
     useContext(AuthContext);
   const Provider = new GoogleAuthProvider();
   const navigate = useNavigate();
@@ -33,13 +33,18 @@ const SignUp = () => {
         SinUpWithEmail(email, password)
           .then((result) => {
             form.reset();
+            EmailVerification().then(() =>
+              toast.success(
+                "Check your email, spam folder also for verification!"
+              )
+            );
             toast.success("User created successfully!");
             setError("");
             navigate(from, { replace: true });
           })
           .catch((error) => setError(error.message));
       } else {
-        setError("Password dosn't match!");
+        setError("Password doesn't match!");
       }
     }
   };
