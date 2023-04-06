@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import UpdateModal from "./UpdateModal";
+import { MdFileDownloadDone } from "react-icons/md";
 
 const SingleToDo = ({ item, handleComplete }) => {
   const handleDelete = (id) => {
@@ -40,13 +41,15 @@ const SingleToDo = ({ item, handleComplete }) => {
           >
             X
           </button>
-          <input
-            onClick={() => handleComplete(item?._id)}
-            type="radio"
-            name="radio-3"
-            className="radio text-bg-400 text-xl"
-            checked
-          />
+          <i className={`p-1 ${item?.complete && "text-white"}`}>
+            <MdFileDownloadDone
+              onClick={() => handleComplete(item?._id)}
+              name="radio-3"
+              className={`radio text-bg-400 text-xl ${
+                item?.complete && "bg-rose-400"
+              }`}
+            />
+          </i>
         </div>
       </div>
       <UpdateModal item={item} />
