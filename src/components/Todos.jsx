@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { AiOutlinePlus } from "react-icons/ai";
 import { AuthContext } from "../Contexst/AuthProvider";
 import SingleToDo from "./SingleToDo";
@@ -8,6 +9,16 @@ const Todos = () => {
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
 
+  const handleComplete = (id) => {
+    const updatedItem = items.map((item) => {
+      if (item._id === id) {
+        item = { ...item, complete: true };
+      }
+      return item;
+    });
+    setItems(updatedItem);
+  };
+
   useEffect(() => {
     fetch(`https://hstodo.vercel.app/todo/${user?.email}`)
       .then((res) => res.json())
@@ -16,7 +27,13 @@ const Todos = () => {
   return (
     <div className="grid grid-cols-1 gap-2 mt-10 mx-5">
       {items?.length > 0 ? (
-        items?.map((item) => <SingleToDo item={item} key={item._id} />)
+        items?.map((item) => (
+          <SingleToDo
+            item={item}
+            key={item._id}
+            handleComplete={handleComplete}
+          />
+        ))
       ) : (
         <h1 className="mx-auto my-20 text-2xl ">There is no todo!</h1>
       )}

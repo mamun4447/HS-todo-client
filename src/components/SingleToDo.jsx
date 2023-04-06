@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import UpdateModal from "./UpdateModal";
 
-const SingleToDo = ({ item }) => {
+const SingleToDo = ({ item, handleComplete }) => {
   const handleDelete = (id) => {
     fetch(`https://hstodo.vercel.app/todo/${id}`, {
       method: "DELETE",
@@ -19,7 +19,7 @@ const SingleToDo = ({ item }) => {
   return (
     <>
       <div className="border w-full lg:w-[75%] mx-auto p-5 rounded-md flex justify-between">
-        <div>
+        <div className={`${item?.complete ? "line-through" : ""}`}>
           <h2 className="text-xl font-bold">{item?.title}</h2>
           <h5 className="text-xs text-slate-400 ml-1">{`${item?.time.date}/ ${
             item?.time?.month + 1
@@ -32,7 +32,7 @@ const SingleToDo = ({ item }) => {
             Update
           </label>
         </div>
-        <div className="justify-center items-center">
+        <div className="flex gap-1 justify-center items-center">
           <button
             onClick={() => handleDelete(item?._id)}
             title="Delete"
@@ -40,6 +40,13 @@ const SingleToDo = ({ item }) => {
           >
             X
           </button>
+          <input
+            onClick={() => handleComplete(item?._id)}
+            type="radio"
+            name="radio-3"
+            className="radio text-bg-400 text-xl"
+            checked
+          />
         </div>
       </div>
       <UpdateModal item={item} />
